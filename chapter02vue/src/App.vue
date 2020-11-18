@@ -1,17 +1,54 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <Counter />
+  </div>
+  <!--
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </div>
+  <router-view />-->
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
+<!--
+
+<script lang="ts">
+import { Vue } from 'vue-class-component';
+import Counter from './components/Counter.vue';
+
+export default class App extends Vue {
+  static components = {
+    Counter
+  }
+}
+</script>
+
+<script>
+import Counter from '@/components/Counter.vue';
+export default{
+  data: function(){
+    return {
+    }
   },
-};
+  components: {
+    Counter
+  },
+}
+</script>
+-->
+<script lang="ts">
+import { Vue, Options } from 'vue-class-component'
+import Counter from '@/components/Counter.vue';
+
+@Options({
+  components: {
+    Counter
+  }
+})
+export default class App extends Vue {
+  
+}
 </script>
 
 <style lang="stylus">
