@@ -4,8 +4,42 @@
     <TaskInput class='col-6' @add-task='addNewTask' />
     <div class='col-12'>
       <div class='cardBox'>
-        <div class='container'>
+        <div class="container">
           <h2>My Tasks</h2>
+          <hr />
+          <div class="col-4">
+            <input
+              v-model="hideDone"
+              type="checkbox"
+              id="hideDone"
+              name="hideDone"
+            />
+            <label for="hideDone">
+              Hide Done Tasks
+            </label>
+          </div>
+          <div class="col-4">
+            <input
+              v-model="reverse"
+              type="checkbox"
+              id="reverse"
+              name="reverse"
+            />
+            <label for="reverse">
+              Reverse Order
+            </label>
+          </div>
+          <div class="col-4">
+            <input
+              v-model="sortById"
+              type="checkbox"
+              id="sortById"
+              name="sortById"
+            />
+            <label for="sortById">
+              Sort By Id
+            </label>
+          </div>
           <ul class='taskList'>
             <li v-for='(taskItem, index) in displayList' :key='`${index}_${Math.random()}`'>
               <input type='checkbox'
@@ -38,6 +72,9 @@ import TaskInput from './components/TaskInput.vue';
 })
 export default class App extends Vue {
   public taskList:any = [];
+  public hideDone:boolean = false;
+  public reverse:boolean = false;
+  public sortById:boolean = false;
   public firstName:string = "Daniel";
   public lastName:string = "Correa";
 
@@ -50,7 +87,10 @@ export default class App extends Vue {
   }
 
   public get displayList(){ //computed property in vue-class-style
-    return this.sortedList;
+    const taskList = [...this.sortedList];
+      return this.reverse
+        ? taskList.reverse()
+        : taskList;
   }
 
   public get name(){ //computed property in vue-class-style
@@ -66,12 +106,18 @@ export default class App extends Vue {
   }
   
   public get filteredList() {
-    return [...this.baseList]
-      .filter((t) => !t.finishedAt);
+    return this.hideDone
+        ? [...this.baseList]
+          .filter((t) => !t.finishedAt)
+        : [...this.baseList];
   }
   public get sortedList() {
     return [...this.filteredList]
-      .sort((a, b) => b.id - a.id);
+        .sort((a, b) => (
+          this.sortById
+            ? b.id - a.id
+            : ((a.finishedAt || 0) - (b.finishedAt) || 0)
+        ));
   }
 
   public changeStatus(taskId:number) {
