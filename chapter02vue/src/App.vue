@@ -2,41 +2,8 @@
   <div id="app">
     <Counter />
   </div>
-  <!--
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />-->
 </template>
 
-
-<!--
-
-<script lang="ts">
-import { Vue } from 'vue-class-component';
-import Counter from './components/Counter.vue';
-
-export default class App extends Vue {
-  static components = {
-    Counter
-  }
-}
-</script>
-
-<script>
-import Counter from '@/components/Counter.vue';
-export default{
-  data: function(){
-    return {
-    }
-  },
-  components: {
-    Counter
-  },
-}
-</script>
--->
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component'
 import Counter from '@/components/Counter.vue';

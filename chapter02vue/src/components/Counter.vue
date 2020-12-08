@@ -12,20 +12,20 @@
 </template>
 
 <script lang="ts">
-import { Vue } from 'vue-class-component';
+import { Vue, mixins } from 'vue-class-component';
+import DefaultNumber from '../mixins/defaultNumber';
+import componentMount from '../decorators/componentMount';
 
-export default class Counter extends Vue {
-  valueNumber: number = 0;
+@componentMount
+export default class Counter extends mixins(DefaultNumber) {
 
-  public formattedNumber() {
-    return `Your total number is: ${this.valueNumber}`;
-  }
-
-  public increase() {
+  public debug:boolean = true;
+  public name:string = "CounterComponent";
+  
+  increase() {
     this.valueNumber += 1;
   }
-
-  public decrease() {
+  decrease() {
     this.valueNumber -= 1;
   }
 }
