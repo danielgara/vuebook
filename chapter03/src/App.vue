@@ -2,6 +2,23 @@
   <div id='app'>
     <CurrentTime class='col-4' />
     <TaskInput class='col-6' @add-task='addNewTask' />
+    <div class='col-12'>
+      <div class='cardBox'>
+        <div class='container'>
+          <h2>My Tasks</h2>
+          <ul class='taskList'>
+            <li v-for='(taskItem, index) in taskList' :key='`${index}_${Math.random()}`'>
+              <input type='checkbox'
+                :checked='!!taskItem.finishedAt'
+                @input='changeStatus(index)'
+              />
+              {{ taskItem.task }}
+              <span v-if='taskItem.finishedAt'>{{ taskItem.finishedAt }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -17,18 +34,29 @@ import TaskInput from './components/TaskInput.vue';
   },
 })
 export default class App extends Vue {
+  public taskList:any = [];
+
   public addNewTask(task:any) {
-    alert(`New task added: ${task}`);
+    this.taskList.push({
+      task,
+      createdAt: Date.now(),
+      finishedAt: undefined
+    });
   }
+
+  public changeStatus(taskIndex:number) {
+      const task = this.taskList[taskIndex];
+      if (task.finishedAt) {
+        task.finishedAt = undefined;
+      } else {
+        task.finishedAt = Date.now();
+      }
+    }
 }
 </script>
 
-<style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+<style scoped>
+  .taskList li{
+    text-align: left;
+  }
 </style>
