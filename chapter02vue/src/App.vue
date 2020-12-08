@@ -1,20 +1,23 @@
 <template>
   <div id="app">
-    <Counter />
+    <Counter v-model="amount" />
+    <CounterByTen v-model="amount" />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component'
 import Counter from '@/components/Counter.vue';
+import CounterByTen from '@/components/CounterByTen.vue';
 
 @Options({
   components: {
-    Counter
+    Counter,
+    CounterByTen
   }
 })
 export default class App extends Vue {
-  
+  public amount:number = 10;
 }
 </script>
 

@@ -12,12 +12,12 @@
 </template>
 
 <script lang="ts">
-import { Vue, mixins } from 'vue-class-component';
-import DefaultNumber from '../mixins/defaultNumber';
+import { mixins } from 'vue-class-component';
+import numberWatcher from '../mixins/numberWatcher';
 import componentMount from '../decorators/componentMount';
 
 @componentMount
-export default class Counter extends mixins(DefaultNumber) {
+export default class Counter extends mixins(numberWatcher) {
 
   public debug:boolean = true;
   public name:string = "CounterComponent";
@@ -25,6 +25,7 @@ export default class Counter extends mixins(DefaultNumber) {
   increase() {
     this.valueNumber += 1;
   }
+
   decrease() {
     this.valueNumber -= 1;
   }

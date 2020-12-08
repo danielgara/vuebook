@@ -1,7 +1,7 @@
 <template>
   <div>
     <fieldset>
-      <legend>{{ formattedNumber }}</legend>
+      <legend>{{ formattedNumber() }}</legend>
       <button @click="increase">
         Increase By Ten
       </button>
@@ -14,10 +14,10 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Component, { mixins } from 'vue-class-component';
-import DefaultNumber from '../mixins/defaultNumber';
+import { mixins } from 'vue-class-component';
+import numberWatcher from '../mixins/numberWatcher';
 
-export default class CounterByTen extends mixins(DefaultNumber) {
+export default class CounterByTen extends mixins(numberWatcher) {
   increase() {
     this.valueNumber += 10;
   }
