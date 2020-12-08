@@ -7,15 +7,18 @@
         <div class='container'>
           <h2>My Tasks</h2>
           <ul class='taskList'>
-            <li v-for='(taskItem, index) in taskList' :key='`${index}_${Math.random()}`'>
+            <li v-for='(taskItem, index) in displayList' :key='`${index}_${Math.random()}`'>
               <input type='checkbox'
                 :checked='!!taskItem.finishedAt'
                 @input='changeStatus(index)'
               />
               {{ taskItem.task }}
-              <span v-if='taskItem.finishedAt'>{{ taskItem.finishedAt }}</span>
+              <span v-if='taskItem.finishedAt'>|
+                Done at:
+                {{ formatDate(taskItem.finishedAt) }}</span>
             </li>
           </ul>
+          Computed example {{ name }}
         </div>
       </div>
     </div>
@@ -31,10 +34,12 @@ import TaskInput from './components/TaskInput.vue';
   components: {
     CurrentTime,
     TaskInput
-  },
+  }
 })
 export default class App extends Vue {
   public taskList:any = [];
+  public firstName:string = "Daniel";
+  public lastName:string = "Correa";
 
   public addNewTask(task:any) {
     this.taskList.push({
@@ -44,14 +49,41 @@ export default class App extends Vue {
     });
   }
 
+  public get displayList(){ //computed property in vue-class-style
+    return this.taskList;
+  }
+
+  public get name(){ //computed property in vue-class-style
+    return this.firstName + " " + this.lastName;
+  }
+
   public changeStatus(taskIndex:number) {
-      const task = this.taskList[taskIndex];
-      if (task.finishedAt) {
-        task.finishedAt = undefined;
-      } else {
-        task.finishedAt = Date.now();
-      }
+    const task = this.taskList[taskIndex];
+    if (task.finishedAt) {
+      task.finishedAt = undefined;
+    } else {
+      task.finishedAt = Date.now();
     }
+  }
+
+  public formatDate(value:any) {
+    if (!value) return '';
+    if (typeof value !== 'number') return value;
+    const browserLocale = navigator.languages && navigator.languages.length
+      ? navigator.languages[0]
+      : navigator.language;
+    const intlDateTime = new Intl.DateTimeFormat(
+      browserLocale,
+      {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+      },
+    );
+    return intlDateTime.format(new Date(value));
+  }
 }
 </script>
 

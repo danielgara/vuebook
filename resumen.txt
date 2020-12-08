@@ -1,6 +1,6 @@
 - Mixins: Cuando una función se repite en diferentes archivos VUE, entonces una buena opción seria crear un mixin.
 
-- Decorators: Cuando necesitamos modificar el comportamiento de un método o ejecutar algunas funcionalidades antes de la ejecución de ese método, entonces una opción es definir un Decorator.
+- Decorators: Cuando necesitamos modificar el comportamiento de un método o ejecutar algunas funcionalidades antes de la ejecución de ese método, entonces una opción es definir un Decorator. Por ejemplo ejecutar algo antes del mounted()
 
 - Hook: Cuando necesitamos modificar un componente, antes, durante, o después de alguna acción del ciclo de vida de los componentes, entonces usamos un Hook.
 
@@ -19,3 +19,17 @@
 - watch $route: para definir acciones cuando se cambian las rutas.
 
 - props: sirve para recibir datos del componente padre.
+
+- computed properties: https://es.vuejs.org/v2/guide/computed.html
+
+Interesante, diferencia entre propiedad computada y método normal:
+En lugar de una propiedad computada, podemos definir la misma función como un método en su lugar. Para el resultado final, los dos enfoques son exactamente los mismos. Sin embargo, la diferencia es que las propiedades computadas se almacenan en caché según sus dependencias. Una propiedad computada solo se volverá a evaluar cuando alguna de sus dependencias haya cambiado. Esto significa que mientras message no haya cambiado, el acceso múltiple a la propiedad computada de reverseMessage regresará inmediatamente el resultado previamente calculado sin tener que ejecutar la función de nuevo.
+
+Ejemplo en vue-class-component style:
+
+public firstName:string = "Daniel";
+public lastName:string = "Correa";
+
+public get name(){ //computed property in vue-class-style
+  return this.firstName + " " + this.lastName;
+}
