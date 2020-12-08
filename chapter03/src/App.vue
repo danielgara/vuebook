@@ -10,9 +10,9 @@
             <li v-for='(taskItem, index) in displayList' :key='`${index}_${Math.random()}`'>
               <input type='checkbox'
                 :checked='!!taskItem.finishedAt'
-                @input='changeStatus(index)'
+                @input='changeStatus(taskItem.id)'
               />
-              {{ taskItem.task }}
+              #{{ taskItem.id }} - {{ taskItem.task }}
               <span v-if='taskItem.finishedAt'>|
                 Done at:
                 {{ formatDate(taskItem.finishedAt) }}</span>
@@ -50,15 +50,32 @@ export default class App extends Vue {
   }
 
   public get displayList(){ //computed property in vue-class-style
-    return this.taskList;
+    return this.sortedList;
   }
 
   public get name(){ //computed property in vue-class-style
     return this.firstName + " " + this.lastName;
   }
 
-  public changeStatus(taskIndex:number) {
-    const task = this.taskList[taskIndex];
+  public get baseList() {
+    return [...this.taskList]
+      .map((t, index) => ({
+        ...t,
+        id: index + 1,
+      }));
+  }
+  
+  public get filteredList() {
+    return [...this.baseList]
+      .filter((t) => !t.finishedAt);
+  }
+  public get sortedList() {
+    return [...this.filteredList]
+      .sort((a, b) => b.id - a.id);
+  }
+
+  public changeStatus(taskId:number) {
+    const task = this.taskList[taskId-1];
     if (task.finishedAt) {
       task.finishedAt = undefined;
     } else {
