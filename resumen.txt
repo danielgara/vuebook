@@ -1,0 +1,21 @@
+- Mixins: Cuando una función se repite en diferentes archivos VUE, entonces una buena opción seria crear un mixin.
+
+- Decorators: Cuando necesitamos modificar el comportamiento de un método o ejecutar algunas funcionalidades antes de la ejecución de ese método, entonces una opción es definir un Decorator.
+
+- Hook: Cuando necesitamos modificar un componente, antes, durante, o después de alguna acción del ciclo de vida de los componentes, entonces usamos un Hook.
+
+- vue-class-component: útil para dar estructura de clases a los archivos vue.
+
+- vue-property-decorator: útil para definir otros decoradores que no trae vue-class-component como watch, prop, etc.
+
+- Plugins: útiles para definir componentes globales, que queremos utilizar dentro de muchos otros componentes.
+
+- emits: sirve para indicar que el componente emitira un evento. Ejemplo emits: ['add-task'] (en el component hijo).
+
+- @add-task (v-on:add-task): forma de recibir un evento de un hijo.
+
+- components: sirve para declarar los componentes que serán utilizados dentro del component actual.
+
+- watch $route: para definir acciones cuando se cambian las rutas.
+
+- props: sirve para recibir datos del componente padre.
