@@ -33,3 +33,6 @@ public lastName:string = "Correa";
 public get name(){ //computed property in vue-class-style
   return this.firstName + " " + this.lastName;
 }
+
+- vuelidate (npm install vuelidate) para validaciones, y con TypeScript se necesita (npm install @types/vuelidate)
+- vuelidate for Vue 3.0 requires (npm install @vuelidate/core @vuelidate/validators)

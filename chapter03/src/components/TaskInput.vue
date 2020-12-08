@@ -11,16 +11,29 @@
 
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
+import { required, minLength } from '@vuelidate/validators';
 
 @Options({
-  emits: ['add-task']
+  emits: ['add-task'],
+  validations: {
+    task:{
+      required,
+      minLength: minLength(5),
+    }
+  }
 })
 export default class TaskInput extends Vue {
   public task:string="";
+  public $v:any;
 
   public addTask() {
-    this.$emit('add-task', this.task);
-    this.task = '';
+    this.$v.$touch();
+    if (this.$v.$invalid) {
+      alert("Datos incorrectos");
+    }else{
+      this.$emit('add-task', this.task);
+      this.task = '';
+    }
   }
 }
 </script>
