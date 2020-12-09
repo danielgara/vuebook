@@ -50,3 +50,8 @@ public get name(){ //computed property in vue-class-style
 
 - etiqueta <component> se usa para definir componentes dinamicos. Que se cargan de acuerdo alguna variable o método vue.
 
+- provide/inject: para inyección de dependencias. Mas info: https://v3.vuejs.org/guide/component-provide-inject.html
+In fact, you can think of dependency injection as sort of “long-range props”, except:
+* parent components don’t need to know which descendants use the properties it provides
+* child components don’t need to know where injected properties are coming from
+OJO no es reactivo. Si se cambia un dato en el padre, no se cambia en el hijo. Toca hacer cambios con ref, para que sea reactivo.

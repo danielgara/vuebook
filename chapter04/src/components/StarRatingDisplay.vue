@@ -41,6 +41,13 @@ import { Vue, Options } from 'vue-class-component';
       type: Number,
       required: false,
       default: 0,
+    }
+  },
+  inject: {
+    starRating: {
+      default() {
+        console.error('StarRatingInput need to be a child of StarRating');
+      },
     },
   }
 })

@@ -34,6 +34,9 @@ components: {
     StarRatingInput,
     StarRatingDisplay
   },
+  provide: {
+    starRating: true,
+  },
   props: {
     maxRating: {
       type: Number,
