@@ -36,3 +36,5 @@ public get name(){ //computed property in vue-class-style
 
 - vuelidate (npm install vuelidate) para validaciones, y con TypeScript se necesita (npm install @types/vuelidate)
 - vuelidate for Vue 3.0 requires (npm install @vuelidate/core @vuelidate/validators)
+
+- slots: espacios en blanco, o zonas que se pueden reemplazar por componentes, HTML o lo que sea.
