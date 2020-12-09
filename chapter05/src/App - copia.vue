@@ -38,6 +38,7 @@
   >
     Delete User
   </button>
+  <!--<RandomCat />-->
 </div>
 </template>
 
@@ -49,13 +50,16 @@ import {
   deleteHttp,
 } from './http/fetchApi';
 
+/*import RandomCat from './components/RandomCat.vue';
+import httpMethods from './http/fetchApi';*/
 export default {
   name: 'app',
-  data: () => ({
-    response: undefined,
-    userData: '',
-    userId: undefined,
-  }),
+  /*components: {
+    RandomCat
+  },
+  methods: {
+    ...httpMethods,
+  },*/
   async beforeMount() {
     await this.getAllUsers();
   },

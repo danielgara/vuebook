@@ -68,3 +68,9 @@ OJO no es reactivo. Si se cambia un dato en el padre, no se cambia en el hijo. T
 - Lazy loading: cargar componentes cuando sea necesario. Esto gracias a webpack.
 - defineAsyncComponent. Metodo para lazy loading.
 EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/ProjectModels.vue ->  loadCustomComponentModelActions()
+
+- miragejs: simular un pequeño server http con JSON
+
+- axios: libreria top reina del protocolo http
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/assets/js/custom_models/component/custom/ComponentDerivation.vue -> public testComponentBackend()
+
