@@ -1,6 +1,14 @@
 <template>
   <div>
-    <StarRatingInput
+    <component
+      :is="starComponent"
+      :max-rating="maxRating"
+      :rating="rating || rank"
+      :votes="votes"
+      @final-vote="vote"
+    > Rate this Place
+    </component>
+    <!--<StarRatingInput
       v-if="!voted"
       :max-rating="maxRating"
       @final-vote="vote"
@@ -12,7 +20,7 @@
       :max-rating="maxRating"
       :rating="rating || rank"
       :votes="votes"
-    />
+    />-->
   </div>
 </template>
 
@@ -50,6 +58,14 @@ export default class StarRating extends Vue {
   public rating:any;
   public rank:number = 0;
   public voted:boolean = false;
+
+  public get starComponent(){
+    if(!this.voted){
+      return StarRatingInput;
+    }else{
+      return StarRatingDisplay;
+    }
+  }
 
   public vote(rank:any) {
     this.rank = rank;

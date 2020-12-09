@@ -47,3 +47,6 @@ public get name(){ //computed property in vue-class-style
 - $parent: utilizado en un componente hijo para acceder a los datos del padre.
 
 - $root: utilizado en un componente para acceder a los datos del component raíz de vue (generalmente App).
+
+- etiqueta <component> se usa para definir componentes dinamicos. Que se cargan de acuerdo alguna variable o método vue.
+
