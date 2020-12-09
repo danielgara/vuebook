@@ -43,16 +43,18 @@
 
 <script>
 import {
-  getHttp,
+  //getHttp,
   postHttp,
   patchHttp,
   deleteHttp,
 } from './http/fetchApi';
 
+import axios from 'axios';
+
 export default {
   name: 'app',
   data: () => ({
-    response: undefined,
+    response: '',
     userData: '',
     userId: undefined,
   }),
@@ -61,8 +63,20 @@ export default {
   },
   methods: {
     async getAllUsers() {
-      this.response = await getHttp(`${window.location.href}api/users`);
+      let self = this;
+      axios.get(`${window.location.href}api/users`)
+        .then(function (resp) {
+          if(resp.data){
+            self.response = resp.data;
+          }
+        })  
+        .catch(function (error) {
+          console.log(error);
+        });
     },
+    /*async getAllUsers() {
+      this.response = await getHttp(`${window.location.href}api/users`);
+    },*/
     async createUser(data) {
       await postHttp(`${window.location.href}api/users`, { data });
       await this.getAllUsers();
