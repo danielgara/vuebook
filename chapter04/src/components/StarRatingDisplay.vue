@@ -1,0 +1,72 @@
+<template>
+  <div class="starRating">
+    <ul>
+      <li
+        v-for="rate in maxRating"
+        :key="rate"
+      >
+        <i class="material-icons">
+          {{ getStarName(rate) }}
+        </i>
+      </li>
+    </ul>
+    <span class="rating">
+      {{ rating }}
+    </span>
+    <span
+      v-if="votes"
+      class="votes"
+    >
+      ({{ votes }})
+    </span>
+  </div>
+</template>
+
+<script lang="ts">
+import { Vue, Options } from 'vue-class-component';
+
+@Options({
+  props: {
+    maxRating: {
+      type: Number,
+      required: false,
+      default: 5,
+    },
+    rating: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    votes: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+  }
+})
+export default class StarRatingDisplay extends Vue {
+  public maxRating:any;
+  public votes:any;
+  public rating:any;
+
+  public getStarName(rate:any) {
+    if (rate <= this.rating) {
+      return 'star';
+    }
+    if (Math.fround((rate - this.rating)) < 1) {
+      return 'star_half';
+    }
+    return 'star_border';
+  }
+}
+</script>
+
+<style scoped>
+  @import '../assets/css/starRating.css';
+  .rating, .votes {
+    display: inline-block;
+    color: rgba(0,0,0, .65);
+    font-size: .75rem;
+    margin-left: .4rem;
+  }
+</style>

@@ -38,3 +38,12 @@ public get name(){ //computed property in vue-class-style
 - vuelidate for Vue 3.0 requires (npm install @vuelidate/core @vuelidate/validators)
 
 - slots: espacios en blanco, o zonas que se pueden reemplazar por componentes, HTML o lo que sea.
+
+- functional components: componentes que son stateless, que no almacenan datos, utiles para rendizar pedazos de vistas o donde no se necesiten datos.
+- en vue 3.0 ya no existen functional components. Mas info aquí: https://v3.vuejs.org/guide/migration/functional-components.html#overview
+
+- $refs: colocar referencia a componentes hijos para acceder a los datos de ellos.
+
+- $parent: utilizado en un componente hijo para acceder a los datos del padre.
+
+- $root: utilizado en un componente para acceder a los datos del component raíz de vue (generalmente App).
