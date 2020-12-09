@@ -25,9 +25,10 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component';
+import { Vue, Options, mixins } from 'vue-class-component';
 import StarRatingInput from '@/components/StarRatingInput.vue';
 import StarRatingDisplay from '@/components/StarRatingDisplay.vue';
+import StarRatingDisplayMixin from '../mixins/starRatingDisplay';
 
 @Options({
 components: {
@@ -36,26 +37,9 @@ components: {
   },
   provide: {
     starRating: true,
-  },
-  props: {
-    maxRating: {
-      type: Number,
-      required: false,
-      default: 5,
-    },
-    rating: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
-    votes: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
   }
 })
-export default class StarRating extends Vue {
+export default class StarRating extends mixins(StarRatingDisplayMixin) {
   public maxRating:any;
   public votes:any;
   public rating:any;

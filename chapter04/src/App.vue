@@ -53,10 +53,12 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component'
-import MaterialCardBox from '@/components/MaterialCardBox.vue';
-import MaterialButton from '@/components/MaterialButton.vue';
-import StarRating from '@/components/StarRating.vue';
+import { defineAsyncComponent } from 'vue';
+import { Vue, Options } from 'vue-class-component';
+
+const StarRating = defineAsyncComponent(() => import('./components/StarRating.vue'));
+const MaterialButton = defineAsyncComponent(() => import('./components/MaterialButton.vue'));
+const MaterialCardBox = defineAsyncComponent(() => import('./components/MaterialCardBox.vue'));
 
 @Options({
   components: {

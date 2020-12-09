@@ -19,27 +19,14 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component';
+import { Vue, Options, mixins } from 'vue-class-component';
+import StarRatingBaseMixin from '../mixins/starRatingBase';
 
 @Options({
-  props: {
-    maxRating: {
-      type: Number,
-      required: false,
-      default: 5,
-    }
-  },
   emits: ['final-vote'],
-  inject: {
-    starRating: {
-      default() {
-        console.error('StarRatingInput need to be a child of StarRating');
-      },
-    },
-  }
 })
 
-export default class StarRatingInput extends Vue {
+export default class StarRatingInput extends mixins(StarRatingBaseMixin) {
   public maxRating:any;
   public rating:number = 0;
 

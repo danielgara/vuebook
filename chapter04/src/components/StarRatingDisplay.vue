@@ -23,48 +23,14 @@
 </template>
 
 <script lang="ts">
-import { Vue, Options } from 'vue-class-component';
+import { Vue, mixins } from 'vue-class-component';
+import StarRatingDisplayMixin from '../mixins/starRatingDisplay';
+import StarRatingChildMixin from '../mixins/starRatingChild';
+import StarRatingNameMixin from '../mixins/starRatingName';
 
-@Options({
-  props: {
-    maxRating: {
-      type: Number,
-      required: false,
-      default: 5,
-    },
-    rating: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
-    votes: {
-      type: Number,
-      required: false,
-      default: 0,
-    }
-  },
-  inject: {
-    starRating: {
-      default() {
-        console.error('StarRatingInput need to be a child of StarRating');
-      },
-    },
-  }
-})
-export default class StarRatingDisplay extends Vue {
+export default class StarRatingDisplay extends mixins(StarRatingDisplayMixin, StarRatingNameMixin, StarRatingChildMixin) {
   public maxRating:any;
   public votes:any;
-  public rating:any;
-
-  public getStarName(rate:any) {
-    if (rate <= this.rating) {
-      return 'star';
-    }
-    if (Math.fround((rate - this.rating)) < 1) {
-      return 'star_half';
-    }
-    return 'star_border';
-  }
 }
 </script>
 

@@ -1,24 +1,31 @@
 - Mixins: Cuando una función se repite en diferentes archivos VUE, entonces una buena opción seria crear un mixin.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/ProjectModels.vue -> export default class ProjectModels extends mixins(GlobalVueFunctions)
 
 - Decorators: Cuando necesitamos modificar el comportamiento de un método o ejecutar algunas funcionalidades antes de la ejecución de ese método, entonces una opción es definir un Decorator. Por ejemplo ejecutar algo antes del mounted()
 
 - Hook: Cuando necesitamos modificar un componente, antes, durante, o después de alguna acción del ciclo de vida de los componentes, entonces usamos un Hook.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/ProjectModels.vue -> beforeMount
 
 - vue-class-component: útil para dar estructura de clases a los archivos vue.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/ProjectModels.vue 
 
 - vue-property-decorator: útil para definir otros decoradores que no trae vue-class-component como watch, prop, etc.
 
 - Plugins: útiles para definir componentes globales, que queremos utilizar dentro de muchos otros componentes.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/plugins/ModalPlugin.ts
 
 - emits: sirve para indicar que el componente emitira un evento. Ejemplo emits: ['add-task'] (en el component hijo).
 
 - @add-task (v-on:add-task): forma de recibir un evento de un hijo.
 
 - components: sirve para declarar los componentes que serán utilizados dentro del component actual.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/Docs.vue
 
 - watch $route: para definir acciones cuando se cambian las rutas.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/ProjectModels.vue -> watch
 
 - props: sirve para recibir datos del componente padre.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/components/Breadcrumb.vue -> props
 
 - computed properties: https://es.vuejs.org/v2/guide/computed.html
 
@@ -47,11 +54,17 @@ public get name(){ //computed property in vue-class-style
 - $parent: utilizado en un componente hijo para acceder a los datos del padre.
 
 - $root: utilizado en un componente para acceder a los datos del component raíz de vue (generalmente App).
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/ProjectModels.vue -> implementSearchBarFunction()
 
 - etiqueta <component> se usa para definir componentes dinamicos. Que se cargan de acuerdo alguna variable o método vue.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/ProjectModels.vue -> <component :is="customComponentModelActions" :variaMosGraph="variaMosGraph" />
 
 - provide/inject: para inyección de dependencias. Mas info: https://v3.vuejs.org/guide/component-provide-inject.html
 In fact, you can think of dependency injection as sort of “long-range props”, except:
 * parent components don’t need to know which descendants use the properties it provides
 * child components don’t need to know where injected properties are coming from
 OJO no es reactivo. Si se cambia un dato en el padre, no se cambia en el hijo. Toca hacer cambios con ref, para que sea reactivo.
+
+- Lazy loading: cargar componentes cuando sea necesario. Esto gracias a webpack.
+- defineAsyncComponent. Metodo para lazy loading.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/ProjectModels.vue ->  loadCustomComponentModelActions()
