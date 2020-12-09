@@ -1,105 +1,61 @@
 <template>
-<div id="app">
-    <h3>Response</h3>
-    <pre>{{ response }}</pre>
-  <hr/>
-  <h1> Create / Update User </h1>
-  <label for="userData">
-    User JSON:
-    <textarea
-      id="userData"
-      v-model="userData"
-      rows="10"
-      cols="40"
-      style="display: block;"
-    ></textarea>
-  </label>
-  <button
-    style="margin: 20px;"
-    @click="createUser(JSON.parse(userData))"
-  >
-    Create User
-  </button>
-  <button
-    style="margin: 20px;"
-    @click="updateUser(JSON.parse(userData))"
-  >
-    Update User
-  </button>
-  <hr/>
-  <h1> Delete User </h1>
-  <label for="userData">
-    User Id:
-    <input type="number" step="1" v-model="userId">
-  </label>
-  <button
-    style="margin: 20px;"
-    @click="deleteUser(userId)"
-  >
-    Delete User
-  </button>
-</div>
+  <div id="app">
+    <vs-row>
+      <vs-col
+        vs-type="flex"
+        vs-justify="left"
+        vs-align="left"
+        vs-w="12">
+        <component
+          :is="component"
+          @change-component="changeComponent"
+        />
+      </vs-col>
+    </vs-row>
+  </div>
 </template>
 
 <script>
-import {
-  //getHttp,
-  postHttp,
-  patchHttp,
-  deleteHttp,
-} from './http/fetchApi';
-
-import axios from 'axios';
-
-export default {
-  name: 'app',
-  data: () => ({
-    response: '',
-    userData: '',
-    userId: undefined,
-  }),
-  async beforeMount() {
-    await this.getAllUsers();
-  },
-  methods: {
-    async getAllUsers() {
-      let self = this;
-      axios.get(`${window.location.href}api/users`)
-        .then(function (resp) {
-          if(resp.data){
-            self.response = resp.data;
-          }
-        })  
-        .catch(function (error) {
-          console.log(error);
-        });
+  import List from './components/list';
+  import Create from './components/create';
+  import View from './components/view';
+  import Update from './components/update';
+  
+  export default {
+    name: 'app',
+    data: () => ({
+      componentIs: 'list',
+      userId: 0,
+    }),
+    provide () {
+      const base = {};
+      Object.defineProperty(base, 'userId', {
+        enumerable: true,
+        get: () => Number(this.userId),
+      });
+      return base;
     },
-    /*async getAllUsers() {
-      this.response = await getHttp(`${window.location.href}api/users`);
-    },*/
-    async createUser(data) {
-      await postHttp(`${window.location.href}api/users`, { data });
-      await this.getAllUsers();
+    computed: {
+      component() {
+        switch (this.componentIs) {
+          case 'list':
+            return List;
+          case 'create':
+            return Create;
+          case 'view':
+            return View;
+          case 'edit':
+            return Update;
+          default:
+            return undefined;
+        }
+      }
     },
-    async updateUser(data) {
-      await patchHttp(`${window.location.href}api/users/${data.id}`, { data });
-      await this.getAllUsers();
+    methods: {
+      changeComponent(payload) {
+        this.componentIs = payload.component;
+        this.userId = Number(payload.userId);
+      },
     },
-    async deleteUser(id) {
-      await deleteHttp(`${window.location.href}api/users/${id}`, {}, 'text');
-      await this.getAllUsers();
-    },
-  },
-};
+  };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
