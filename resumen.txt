@@ -96,3 +96,4 @@ EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/router/index.ts ->
 
 - middleware: debe ir dentro de un directorio de router. Se crea el middleware recibiendo el to, from, next (y allí se realiza la validación). A las rutas se les debe añadir meta data para saber cuales se verifican con el middleware y cuales no.
 
+- lazy loading pages: solo se necesita importar cuando se vaya a cargar (en el archivo de manejo de rutas) / component: () => import('../views/Login.vue')
