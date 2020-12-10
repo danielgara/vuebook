@@ -74,3 +74,21 @@ EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/views/ProjectModel
 - axios: libreria top reina del protocolo http
 EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/assets/js/custom_models/component/custom/ComponentDerivation.vue -> public testComponentBackend()
 
+- vue-router: sirve para administrar las rutas de la aplicación
+EJEMPLO:  https://github.com/danielgara/VariaMos/blob/main/src/router/index.ts
+
+- alias (router): An alias of /a as /b means when the user visits /b, the URL remains /b, but it will be matched as if the user is visiting /a.
+
+- redirect (router). Example: /home redirects to / (name can be also used)
+
+  {
+    path: '/home',
+    name: 'home',
+    redirect: '/',
+  }
+
+- nested routes (router). Incluir un atributo children en la ruta padre, con la información de la ruta hija.
+
+- 404 page: incluir un path en el archivo de rutas con una regex.
+EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/router/index.ts -> path: '/:pathMatch(.*)*'
+
