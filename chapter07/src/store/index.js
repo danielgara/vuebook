@@ -1,6 +1,11 @@
 import { createStore } from 'vuex';
 import UserStore from './user';
 
+export default new createStore({
+  ...UserStore,
+});
+
+/*
 export default createStore({
   state: {
     counter: 0,
@@ -23,4 +28,4 @@ export default createStore({
   },
   modules: {
   },
-});
+});*/
