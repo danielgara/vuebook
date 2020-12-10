@@ -1,16 +1,36 @@
 <template>
   <div id="app">
+    <!--
     <transition
-      enter-active-class="animated rotateIn"
-      leave-active-class="animated rotateOut"
-      @after-enter="onEnter"
-      @after-leave="onLeave"
+      name="rotate"
+      mode="out-in"
     >
       <img
         v-if="display"
-        alt="Vue logo" src="./assets/logo.png">
+        key="up"
+        src="./assets/logo.png">
+      <img
+        v-else
+        key="down"
+        src="./assets/logo.png"
+        style="transform: rotate(180deg)"
+      >
+    </transition>-->
+    <transition
+      name="rotate"
+      mode="out-in"
+    >
+      <img
+        v-if="display"
+        key="up"
+        src="./assets/logo.png">
+      <img
+        v-else
+        key="down"
+        src="./assets/logo.png"
+        style="transform: rotate(180deg)"
+      >
     </transition>
-    <h1>The image {{ status }}</h1>
     <button
       @click="display = !display"
     >
@@ -24,26 +44,26 @@ export default {
   name: 'App',
   data: () => ({
     display: true,
-    status: 'appeared',
   }),
-  methods: {
-    onEnter() {
-      this.status = 'appeared';
-    },
-    onLeave() {
-      this.status = 'disappeared';
-    },
-  },
 };
 </script>
 
 <style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.rotate-enter-active,
+.rotate-leave-active {
+  transition: transform .8s ease-in-out;
+}
+.rotate-enter,
+.rotate-leave-active {
+  transform: rotate( -180deg );
+  transition: transform .8s ease-in-out;
+}
 </style>
