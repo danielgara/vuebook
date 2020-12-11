@@ -110,3 +110,11 @@ EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/store/index.ts
 - ant-design: hecho por alibaba, misma situación, no hay soporte para vue3.
 
 - En ant-design, ejemplo claro de layout y como meter cosas dentro del layout.
+
+- netlify aplicación super útil para montar proyectos vue en la nube. 
+- solo se necesita conectar con github y poner lo siguiente:
+
+- Build command: npm run build
+- Publish directory: dist
+
+- otros 2 para despliegue nube: - Vercel (tiene CLI) - Firebase (tiene CLI) -> despliegue desde CLI.
