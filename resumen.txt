@@ -104,3 +104,9 @@ EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/store/index.ts
 - vuex - actions son asincronicas - mutations son sincronicas.
 
 - transtions: animaciones de vue. etiqueta transitions. Mas info: https://v3.vuejs.org/guide/transitions-overview.html#class-based-animations-transitions
+
+- buefy: no esta disponible para vue3.
+- vuetify: tampoco soporte para vue3.
+- ant-design: hecho por alibaba, misma situación, no hay soporte para vue3.
+
+- En ant-design, ejemplo claro de layout y como meter cosas dentro del layout.
