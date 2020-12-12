@@ -118,3 +118,9 @@ EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/store/index.ts
 - Publish directory: dist
 
 - otros 2 para despliegue nube: - Vercel (tiene CLI) - Firebase (tiene CLI) -> despliegue desde CLI.
+
+- dynamic routes: en el inicio del capitulo 11 muestran como agregar rutas dinamicas, mediante la creación de archivos.
+- dynamic store modules: luego muestran como cargan modulos de almacenamiento dinamico de vuex. Todo eso basado en require.context (para recorrer directorios y archivos de manera dinamica).
+
+- directivas: sirven para definir etiquetas personalizbles como v-if, v-on, etc. https://v3.vuejs.org/api/application-api.html#directive
+

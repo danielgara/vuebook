@@ -5,6 +5,11 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <input
+      v-model="inputMask"
+      v-input-mask="'##-###-###'"
+      type="text"
+    >
     <router-view/>
   </div>
 </template>
@@ -13,7 +18,13 @@
 import { Vue, Options } from 'vue-class-component';
 
 export default class App extends Vue {
+  public $store:any;
   public amount:number = 10;
+  public inputMask:any = "";
+
+  public mounted(){
+    console.log( this.$store.state);
+  }
 }
 </script>
 
