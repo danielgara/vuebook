@@ -124,3 +124,7 @@ EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/store/index.ts
 
 - directivas: sirven para definir etiquetas personalizbles como v-if, v-on, etc. https://v3.vuejs.org/api/application-api.html#directive
 
+- quasar: All Platforms in One Go. One source code for all platforms simultaneously through Quasar CLI with all the latest and greatest best practices out of the box. Focus only on your app's features and forget about the boilerplate around it.
+- quasar: framework que permite hacer una pagina web, y desplegarla web, en app movil, en desktop, etc.
+
+- quasar - src - SPA (single-page application). Se hizo un about page.
