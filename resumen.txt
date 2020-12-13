@@ -132,4 +132,6 @@ EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/store/index.ts
 - quasar - src-pwa - PWA (progressive-web application).  Aplicaciones web que son indistinguibles de aplicaciones móviles. 
 - Debe ser responsive - Con notificaciones push - Conectividad mejorada para trabajar sin conexión o con redes de mala calidad. - Usar service workers.
 
-- quasar - src-ssr - SSR (server-side rendering).
+- quasar - src-ssr - SSR (server-side rendering). Nuxt, express.
+- quasar - src-cordova - genera aplicación movil.
+- quasar - src-electron - genera aplicación de escritorio.
