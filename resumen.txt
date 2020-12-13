@@ -128,3 +128,8 @@ EJEMPLO: https://github.com/danielgara/VariaMos/blob/main/src/store/index.ts
 - quasar: framework que permite hacer una pagina web, y desplegarla web, en app movil, en desktop, etc.
 
 - quasar - src - SPA (single-page application). Se hizo un about page.
+
+- quasar - src-pwa - PWA (progressive-web application).  Aplicaciones web que son indistinguibles de aplicaciones móviles. 
+- Debe ser responsive - Con notificaciones push - Conectividad mejorada para trabajar sin conexión o con redes de mala calidad. - Usar service workers.
+
+- quasar - src-ssr - SSR (server-side rendering).
